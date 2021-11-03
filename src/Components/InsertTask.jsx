@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import { useContext } from 'react';
+import TaskContext from '../Context/TaskContext';
 
 function InsertTask() {
-  const [task, setTask] = useState('');
+
+  const { task, setTask } = useContext(TaskContext)
 
   const handleChange = (event) => { 
     setTask(event.target.value)
