@@ -5,19 +5,21 @@ function InsertTask() {
 
   const { task, setTask } = useContext(TaskContext)
 
-  const handleChange = (event) => { 
+  const handleChange = (event) => {
     setTask(event.target.value)
   }
 
   return (
     <label htmlFor="task">
-      Task: <input
-        ype="text"
-        placeholder="Type your task"
+      Task:
+      <input
+        type="text"
+        placeholder="Insert a task"
         name="task"
         id="task"
         value={task}
-        onChange={(event) => handleChange(event)} />
+        onChange={(event) => handleChange(event)}
+      />
     </label>
   )
 };

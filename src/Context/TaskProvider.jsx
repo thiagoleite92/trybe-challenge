@@ -4,10 +4,13 @@ import TaskContext from './TaskContext';
 const TaskProvider = ({ children }) => {
 
   const [task, setTask] = useState('');
+  const [taskList, setTaskList] = useState([]);
 
   const toConsume = {
     task,
-    setTask
+    setTask,
+    taskList,
+    setTaskList,
   };
 
   return (

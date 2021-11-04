@@ -1,17 +1,20 @@
-import React from 'react'
+import { useContext } from 'react';
+import TaskContext from '../Context/TaskContext';
 
-function TaskList({ taskList }) {
+function TaskList() {
+
+  const { taskList } = useContext(TaskContext);
+
   return (
     <main>
       <ul>
-        {
-          taskList
-            ? taskList.map((task) => {
-              return (
-                <li>{task}</li>
-              )
-            })
-            : null
+        {taskList
+          ? taskList.map((task, index) => {
+            return (
+              <li key={index}>{task}</li>
+            )
+          })
+          : null
         }
       </ul>
     </main>
