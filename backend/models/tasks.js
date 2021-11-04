@@ -8,13 +8,22 @@ const getTasksList = async () => {
   return tasksList;
 };
 
-const insertTask = async (task) => {
+const insertTasks = async (task) => {
   const db = await connection();
 
-  await db.collection('tasks').insertOne({ task });
+  let idCounter =  await db.collection('tasks').find().toArray()
+
+  await db.collection('tasks').insertOne({ id: idCounter.length + 1, task });
 };
+
+const deleteTasks =  async (id) => {
+  const db = await connection();
+  await db.collection('tasks').findOneAndDelete({}, { id })
+}
 
 
 module.exports = {
   getTasksList,
+  insertTasks,
+  deleteTasks,
 };
