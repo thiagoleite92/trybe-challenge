@@ -13,3 +13,8 @@ const insertTask = async (task) => {
 
   await db.collection('tasks').insertOne({ task });
 };
+
+
+module.exports = {
+  getTasksList,
+};
