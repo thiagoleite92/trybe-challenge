@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1"
   }
 }

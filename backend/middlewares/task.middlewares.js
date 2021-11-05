@@ -1,5 +1,9 @@
 const { ObjectId } = require('mongodb');
-const { getTasksList } = require("../models/tasks");
+const Joi = require('@hapi/joi')
+
+const taskSchema = Joi.object({
+  task: Joi.string().min(5).required(),
+})
 
 const verifyTaskID = async (req, res, next) => {
   const { id } = req.params
@@ -11,6 +15,16 @@ const verifyTaskID = async (req, res, next) => {
   next();
 }
 
+const validTask = (req, res, next) => {
+  const { task } = req.body;
+
+  if (!task || typeof task !== 'string' || task.length < 5) {
+    res.status(404).json({ message: 'Insert a valid task' });
+  }
+  next();
+}
+
 module.exports = {
   verifyTaskID,
+  validTask,
 }
