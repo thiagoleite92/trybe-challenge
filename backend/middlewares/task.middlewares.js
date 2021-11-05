@@ -1,12 +1,10 @@
+const { ObjectId } = require('mongodb');
 const { getTasksList } = require("../models/tasks");
 
 const verifyTaskID = async (req, res, next) => {
-  console.log(req.params.id)
-  const tasksList = await getTasksList();
+  const { id } = req.params
 
-  const task = tasksList.filter(({ id }) => id === req.params.id)
-
-  if (!task) {
+  if (!ObjectId.isValid(id)) {
     return res.status(404).json({ message: 'ID not found' });
   };
 
